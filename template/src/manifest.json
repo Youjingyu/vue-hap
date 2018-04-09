@@ -19,7 +19,7 @@
     "logLevel": "debug"
   },
   "router": {
-    "entry": "Index",
+    "entry": "TodoMVC",
     "pages": {
       "Index": {
         "component": "index"
