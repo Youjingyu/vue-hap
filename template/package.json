@@ -5,12 +5,8 @@
   "author": "{{ author }}",
   "private": true,
   "scripts": {
-    "build": "cross-env NODE_PLATFORM=na NODE_PHASE=dv webpack --config ./node_modules/vue-hap-tools/webpack.config.js",
-    "release": "cross-env NODE_PLATFORM=na NODE_PHASE=ol webpack --config ./node_modules/vue-hap-tools/webpack.config.js",
-    "server": "cross-env NODE_MOUNTED_ROUTER=\"debug bundle\" node ./node_modules/vue-hap-tools/debugger/server/index.js",
-    "watch": "cross-env NODE_PLATFORM=na NODE_PHASE=dv webpack --config ./node_modules/vue-hap-tools/webpack.config.js --watch",
-    "web-dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "web-start": "npm run dev",
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "start": "npm run dev",
     {{#if_eq runner "jest"}}
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     {{/if_eq}}
@@ -26,7 +22,11 @@
     {{#lint}}
     "lint": "eslint --ext .js,.vue src{{#unit}} test/unit{{/unit}}{{#e2e}} test/e2e/specs{{/e2e}}",
     {{/lint}}
-    "web-build": "node build/build.js"
+    "build": "node build/build.js",
+    "qa-server": "vue-hap server",
+    "qa-watch": "vue-hap watch",
+    "qa-build": "vue-hap build",
+    "qa-release": "vue-hap release"     
   },
   "dependencies": {
     "vue": "^2.5.2"{{#router}},
