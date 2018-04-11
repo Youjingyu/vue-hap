@@ -4,6 +4,28 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>{{ name }}</title>
+    <script>
+      // set font size of root element for rem
+      (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    // use 1600px as max width
+                    clientWidth = clientWidth > 750 ? 750 : clientWidth;
+                    docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                };
+            // add event listener to recalculate
+            win.addEventListener(resizeEvt, recalc);
+            // calculate when DOMContentLoaded
+            doc.addEventListener('DOMContentLoaded', function () {
+                recalc();
+                // show body after calculating to avoid user see the calculation process
+                doc.getElementsByTagName('body')[0].setAttribute('style', 'display: block;');
+            });
+        })(document, window);
+    </script>
   </head>
   <body>
     <div id="app"></div>
