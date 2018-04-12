@@ -19,6 +19,9 @@
     "logLevel": "debug"
   },
   "router": {
+    {{#router}}
+    "entry": "Index",    
+    {{else}}  
     "entry": "TodoMVC",
     "pages": {
       "Index": {
