@@ -10,7 +10,7 @@
 
 <script>
 {{#unless router}}
-import TodoMVC from './TodoMVC/index'
+import TodoMVC from './pages/TodoMVC/index'
 {{/unless}}
 export default {
   name: 'App'{{#router}}{{else}},
