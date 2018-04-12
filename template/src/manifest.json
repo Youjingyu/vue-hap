@@ -21,8 +21,9 @@
   "router": {
     {{#router}}
     "entry": "Index",    
-    {{else}}  
+    {{else}}
     "entry": "TodoMVC",
+    {{/router}}
     "pages": {
       "Index": {
         "component": "index"
