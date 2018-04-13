@@ -1,6 +1,6 @@
 <template>
   <div class="demo-page">
-    <h3 class="title"><span>欢迎打开{{title}}</span></h3>
+    <h3 class="title"><span>欢迎打开\{{title}}</span></h3>
     <button class="btn" @click="routeDetail">跳转到TodoMVC</button>
   </div>
 </template>
