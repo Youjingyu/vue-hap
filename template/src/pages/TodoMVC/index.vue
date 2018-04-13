@@ -21,9 +21,9 @@
       <div class="footer">
           <p><span class="left-item">\{{leftItems}} items left</span></p>
           <div class="toggle-content">
-            <button @click="swicth('all')" class="toggle">all</button>
-            <button @click="swicth('active')" class="toggle">active</button>
-            <button @click="swicth('completed')" class="toggle">completed</button>
+            <button @click="swicth('all')" class="toggle" :class="{'toggle-active': visibility === 'all'}">all</button>
+            <button @click="swicth('active')" class="toggle" :class="{'toggle-active': visibility === 'active'}">active</button>
+            <button @click="swicth('completed')" class="toggle" :class="{'toggle-active': visibility === 'completed'}">completed</button>
           </div>
       </div>
     </section>
@@ -92,14 +92,19 @@ export default {
     removeTodo (todo) {
       var index = this.todos.indexOf(todo)
       this.todos.splice(index, 1)
+      this.updateLeftItem()
     },
     focusItem (curFocusIndex) {
       this.focusIndex = this.focusIndex === curFocusIndex ? undefined : curFocusIndex
     },
+    updateLeftItem(){
+      // 快应用检测不到数组内容的直接修改，需要手动更新leftItems
+      this.leftItems = filters.active(this.todos).length      
+    },
     toggleComplete () {
       // 框架先执行点击事件，再执行v-model的赋值，这里延迟执行，使其在v-model之后执行
       setTimeout(() => {
-        this.leftItems = filters.active(this.todos).length
+        this.updateLeftItem()
       })
     }
   }
@@ -108,14 +113,6 @@ export default {
 <style>
 @import "./css/index.css";
 /* quick app ignore start */
-.todo{
-  list-style: none;
-}
-.toggle:focus{
-  outline: none;
-}
-.new-todo:focus{
-  outline: none;
-}
+@import "./css/web-specific.css";
 /* quick app ignore end */
 </style>
