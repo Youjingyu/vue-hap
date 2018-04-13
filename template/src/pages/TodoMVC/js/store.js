@@ -4,8 +4,8 @@ export default {
   fetch: function () {
     return [
       {title: 'breakfast', completed: true},
-      {title: 'bug fix', completed: false},
-      {title: 'working', completed: false}
+      {title: 'fix bug', completed: false},
+      {title: 'meeting', completed: false}
     ]
   },
   save: function (todos) {
