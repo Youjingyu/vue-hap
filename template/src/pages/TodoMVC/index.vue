@@ -58,10 +58,14 @@ export default {
       newTodo: {text: ''}
     }
   },
-  created () {},
+  created () {
+    {{#router}}
+    console.log(this.$route.query.userInfo)
+    {{/router}}    
+  },
   watch: {
     visibility () {
-      // this.showTodos = filters[this.visibility](this.todos);
+      console.log('visibility changed')
     }
   },
   computed: {
