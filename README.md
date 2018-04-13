@@ -11,4 +11,4 @@ $ npm install
 $ npm run dev 或 npm run qa-dev
 ```
 
-有关vue-hap-tools的说明参考 [vue-hap-tool](https://github.com/Youjingyu/vue-hap-tools)。
+有关vue-hap-tools的说明，参考 [vue-hap-tool](https://github.com/Youjingyu/vue-hap-tools)。
