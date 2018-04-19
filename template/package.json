@@ -23,7 +23,7 @@
     "lint": "eslint --ext .js,.vue src{{#unit}} test/unit{{/unit}}{{#e2e}} test/e2e/specs{{/e2e}}",
     {{/lint}}
     "build": "node build/build.js",
-    "qa-dev": "npm run qa-watch & npm run qa-server",
+    "qa-dev": "vue-hap dev",
     "qa-server": "vue-hap server",
     "qa-watch": "vue-hap watch",
     "qa-build": "vue-hap build",
@@ -119,7 +119,7 @@
     "vue-loader": "^13.3.0",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.5.2",
-    "vue-hap-tools": "^1.0.3",
+    "vue-hap-tools": "^1.0.7",
     "portfinder": "^1.0.13",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1",
