@@ -16,7 +16,7 @@
       routeDetail () {
         this.$router.push ({
           path: '/TodoMVC',
-          query: { useInfo: {name: "John", id: 100}, flag: true, flag2: "true" }
+          query: { userInfo: {name: "John", id: 100}, flag: true, flag2: "true" }
         })
       }
     }
