@@ -1,10 +1,3 @@
-div {
-	display: flex;
-	flex-direction: column;
-	/* font-size: 16px;	 */
-  /* justify-content: center; */
-  /* align-items: center; */
-}
 .header{
 	margin: 10px
 }
@@ -12,10 +5,9 @@ div {
 	font-size: 30px;
 }
 .title{
-	text-align: center;
+	align-items: center;
 }
 .title-text{
-	text-align: center;
 	font-size: 100px;	
 	color: rgba(175, 47, 47, 0.15);
 }
@@ -89,7 +81,7 @@ div {
 }
 .toggle{
 	margin-left: 40px;
-	padding: 20px 20px;
+	padding: 0 20px;
 	height: 75px;
 	color: #777777;
 	font-size: 30px;

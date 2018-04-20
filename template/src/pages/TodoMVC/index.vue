@@ -112,7 +112,8 @@ export default {
 </script>
 <style>
 @import "./css/index.css";
+@import '../../css/reset.css';
 /* quick app ignore start */
-@import "./css/web-specific.css";
+@import "../../css/web-reset.css";
 /* quick app ignore end */
 </style>

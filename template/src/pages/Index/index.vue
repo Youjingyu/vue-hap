@@ -24,9 +24,11 @@
 </script>
 
 <style>
-  div{
-    display: flex;
-  }
+  /* quick app ignore start */
+  @import '../../css/web-reset.css';
+  /* quick app ignore end */
+  @import '../../css/reset.css';
+
   .demo-page {
     width: 100%;
     height: 100%;    
