@@ -20,16 +20,18 @@
   },
   "router": {
     {{#router}}
-    "entry": "Index",    
+    "entry": "pages/Index",
     {{else}}
-    "entry": "TodoMVC",
+    "entry": "pages/TodoMVC",
     {{/router}}
     "pages": {
-      "Index": {
-        "component": "index"
+      "pages/Index": {
+        "component": "index",
+        "path": "/"
       },
-      "TodoMVC": {
-        "component": "index"
+      "pages/TodoMVC": {
+        "pages/component": "index",
+        "path": "/TodoMVC"
       }
     }
   },

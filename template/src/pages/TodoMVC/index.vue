@@ -3,7 +3,7 @@
     <header class="header">
       <h1 class="title"><span class="title-text">Todos</span></h1>
         <div class="new-todo-head">
-          <input class="new-todo" placeholder="What needs to be done?" v-model="newTodo.text">
+          <input class="new-todo" placeholder="What needs to be done?" v-model.trim="newTodo.text">
           <button @click="addTodo" class="new-todo-btn">add</button>
         </div>
       </header>
@@ -11,9 +11,9 @@
         <ul class="todo-list">
           <li class="todo" v-for="(todo, i) in showTodos" :key="i">
             <div class="view">
-              <input type="checkbox" v-model="todo.completed" @click="toggleComplete">
+              <input type="checkbox" v-model="todo.completed" @click="toggleComplete(i)">
               <div class="view-content" @click="focusItem(i)"><span :class="{'view-content-text': todo.completed}">\{{todo.title}}</span></div>
-              <div class="destroy"><span v-show="focusIndex === i" @click="removeTodo(todo)" class="destroy-icon">x</span></div>
+              <div class="destroy"><span v-show="focusIndex === i" @click="removeTodo(i)" class="destroy-icon">x</span></div>
             </div>
           </li>
         </ul>
@@ -30,9 +30,9 @@
 </template>
 
 <script>
-import todoStorage from './js/store'
+import { mapState } from 'vuex'
 
-var filters = {
+const filters = {
   all: function (todos) {
     return todos
   },
@@ -49,19 +49,17 @@ var filters = {
 }
 export default {
   data () {
-    const todos = todoStorage.fetch()
     return {
       todos,
       focusIndex: undefined,
       visibility: 'all',
-      leftItems: filters.active(todos).length,
       newTodo: {text: ''}
     }
   },
   created () {
     {{#router}}
     console.log(this.$route.query.userInfo)
-    {{/router}}    
+    {{/router}}
   },
   watch: {
     visibility () {
@@ -69,8 +67,12 @@ export default {
     }
   },
   computed: {
+    ...mapState(['todos']),
     showTodos () {
       return filters[this.visibility](this.todos)
+    },
+    leftItems () {
+      return filters.active(todos).length
     }
   },
   methods: {
@@ -78,7 +80,7 @@ export default {
       this.visibility = type
     },
     addTodo: function () {
-      var value = this.newTodo.text && this.newTodo.text.trim()
+      const value = this.newTodo.text
       if (!value) {
         return
       }
@@ -86,26 +88,16 @@ export default {
         title: value,
         completed: false
       }
-      this.todos.push(res)
-      this.leftItems = filters.active(this.todos).length
+      this.$store.commit('addTodo', res)
     },
-    removeTodo (todo) {
-      var index = this.todos.indexOf(todo)
-      this.todos.splice(index, 1)
-      this.updateLeftItem()
+    removeTodo (index) {
+      this.$store.commit('addTodo', index)
     },
     focusItem (curFocusIndex) {
       this.focusIndex = this.focusIndex === curFocusIndex ? undefined : curFocusIndex
     },
-    updateLeftItem(){
-      // 快应用检测不到数组内容的直接修改，需要手动更新leftItems
-      this.leftItems = filters.active(this.todos).length      
-    },
-    toggleComplete () {
-      // 框架先执行点击事件，再执行v-model的赋值，这里延迟执行，使其在v-model之后执行
-      setTimeout(() => {
-        this.updateLeftItem()
-      })
+    toggleComplete (i) {
+      console.log(this.todos[i].computed)
     }
   }
 }
