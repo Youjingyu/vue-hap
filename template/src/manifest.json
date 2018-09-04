@@ -30,7 +30,7 @@
         "path": "/"
       },
       "pages/TodoMVC": {
-        "pages/component": "index",
+        "component": "index",
         "path": "/TodoMVC"
       }
     }
@@ -45,5 +45,6 @@
         "menu": false
       }
     }
-  }
+  },
+  "vue-hap-ignore": ["css/web-reset.css"]
 }

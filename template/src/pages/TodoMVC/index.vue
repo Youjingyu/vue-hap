@@ -50,7 +50,6 @@ const filters = {
 export default {
   data () {
     return {
-      todos,
       focusIndex: undefined,
       visibility: 'all',
       newTodo: {text: ''}
@@ -58,7 +57,7 @@ export default {
   },
   created () {
     {{#router}}
-    console.log(this.$route.query.userInfo)
+    console.log(JSON.stringify(this.$route.query))
     {{/router}}
   },
   watch: {
@@ -72,7 +71,7 @@ export default {
       return filters[this.visibility](this.todos)
     },
     leftItems () {
-      return filters.active(todos).length
+      return filters.active(this.todos).length
     }
   },
   methods: {
@@ -91,13 +90,13 @@ export default {
       this.$store.commit('addTodo', res)
     },
     removeTodo (index) {
-      this.$store.commit('addTodo', index)
+      this.$store.commit('removeTodo', index)
     },
     focusItem (curFocusIndex) {
       this.focusIndex = this.focusIndex === curFocusIndex ? undefined : curFocusIndex
     },
     toggleComplete (i) {
-      console.log(this.todos[i].computed)
+      console.log(this.todos[i].completed)
     }
   }
 }

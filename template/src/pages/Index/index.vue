@@ -7,16 +7,16 @@
 
 <script>
   export default {
-    data(){
+  data () {
       return {
         title: '示例页面'
       }
     },
     methods: {
       routeDetail () {
-        this.$router.push ({
+        this.$router.push({
           path: '/TodoMVC',
-          query: { userInfo: {name: "John", id: 100}, flag: true, flag2: "true" }
+          query: { userInfo: {name: 'John', id: 100}, flag: true, flag2: 'true' }
         })
       }
     }
