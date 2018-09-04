@@ -6,21 +6,21 @@
 </template>
 
 <script>
-  export default {
+export default {
   data () {
-      return {
-        title: '示例页面'
-      }
-    },
-    methods: {
-      routeDetail () {
-        this.$router.push({
-          path: '/TodoMVC',
-          query: { userInfo: {name: 'John', id: 100}, flag: true, flag2: 'true' }
-        })
-      }
+    return {
+      title: '示例页面'
+    }
+  },
+  methods: {
+    routeDetail () {
+      this.$router.push({
+        path: '/TodoMVC',
+        query: { userInfo: {name: 'John', id: 100}, flag: true, flag2: 'true' }
+      })
     }
   }
+}
 </script>
 
 <style>
