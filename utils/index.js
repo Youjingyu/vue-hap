@@ -75,9 +75,9 @@ To get started:
   ${yellow(
     `${data.inPlace ? '' : `cd ${data.destDirName}\n  `}${installMsg(
       data
-    )}${lintMsg(data)}npm run dev\n  or\n  npm run qa-dev`
+    )}${lintMsg(data)}npm run dev\n  or\n  npm run qa-watch\n  npm run qa-server`
   )}
-  
+
 Documentation can be found at https://github.com/Youjingyu/vue-hap-tools
 `
   console.log(message)
